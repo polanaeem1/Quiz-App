@@ -181,3 +181,18 @@ input::placeholder{
 #saveScoreBtn{
   border: none;
 }
+
+/* quiz */
+.quiz-on{
+  display: none;
+}
+
+/* End */
+.end-on{
+  display: none;
+}
+
+/* Leaderboard */
+.leaderboard-on{
+  display: none;
+}

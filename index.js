@@ -3,12 +3,20 @@ const choices = Array.from(document.querySelectorAll('.choice-text'))
 const progressText=document.querySelector('#progressText')
 const scoreText =document.querySelector('#score')
 const progressBarFull =document.querySelector('#progressBarFull')
+const quizOn=document.querySelector('.quiz-on')
+const home=document.querySelector('#home')
+const quizBtn=document.querySelector('#quiz-btn')
+const endOn=document.querySelector('.end-on')
+const finalScore = document.querySelector("#finalScore");
+const endText=document.querySelector('#end-text')
+const goHome=document.querySelector('.goHome')
 
 let currentQuestion = {}
 let acceptingAnswers= true
 let score=0
 let questionCounter=0
 let availableQuestions=[]
+let correctScore=0
 
 let questions =[
     {
@@ -56,8 +64,10 @@ startQuiz =()=>{
 }
 getNewQuestion=()=>{
     if(availableQuestions.length === 0||questionCounter>MAX_QUESTIONS){
-        localStorage.setItem('mostRecentScore',score)
-        return window.location.assign('/end.html')
+      finalScore.innerText = score;
+      endText.innerText=`You Solved ${correctScore} Correct Questions  form 4 `
+      quizOn.style.display=`none`
+      endOn.style.display=`flex`
     }
     questionCounter++
     progressText.innerText=`Question ${questionCounter} of ${MAX_QUESTIONS}`
@@ -94,5 +104,18 @@ choices.forEach(choice => {
 incrementScore =num=>{
     score +=num
     scoreText.innerText= score
+    correctScore++
 }
-startQuiz()
+
+  startQuiz()
+
+quizBtn.addEventListener('click',()=>{
+  home.style.display=`none`
+  quizOn.style.display=`flex`
+})
+
+goHome.addEventListener('click',()=>{
+  home.style.display=`flex`
+  quizOn.style.display=`none`
+  endOn.style.display=`none`
+})
