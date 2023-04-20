@@ -115,7 +115,5 @@ quizBtn.addEventListener('click',()=>{
 })
 
 goHome.addEventListener('click',()=>{
-  home.style.display=`flex`
-  quizOn.style.display=`none`
-  endOn.style.display=`none`
+  location.reload()
 })
